@@ -110,7 +110,7 @@
 	-moz-transition: @value;
 	-ms-transition: @value; 
 	-o-transition: @value;
-    transition: @value;
+	transition: @value;
 }
 
 /* Chrome 43.0 (4.0 -webkit-), IE 10.0, Mozilla 16.0 (5.0 -moz-), Safari 9.0 (4.0 -webkit-), Opera 30.0 (15.0 -webkit- 12.0 -o-)
@@ -129,10 +129,10 @@
  * animation-delay: time|initial|inherit;
  */
 .animation-delay (@value) {
-    -webkit-animation-delay: @value;
-    -moz-animation-delay: @value;
-    -ms-animation-delay: @value;
-    -o-animation-delay: @value;
+	-webkit-animation-delay: @value;
+	-moz-animation-delay: @value;
+	-ms-animation-delay: @value;
+	-o-animation-delay: @value;
 	animation-delay: @value;
 }
 
@@ -299,18 +299,17 @@
 /* Chrome all, IE 10.0, Firefox all, Safari all, Opera 27.0
  * user-select: auto|text|none|contain|all
  */
-.user-select (@value: none) {
-    -moz-user-select: @value;
-    -khtml-user-select: @value;
-    -webkit-user-select: @value;
-    -ms-user-select: @value;
-    user-select: @value;
+.user-select (@value: all) {
+	-webkit-user-select: @value;
+	-moz-user-select: @value;
+	-ms-user-select: @value;
+	user-select: @value;
 }
 
 /* Chrome 4.0, IE 10.0, Firefox 4.0, Safari 5.0, Opera 15.0
  */
 .placeholder-font (@color, @fontSize, @fontWeight) {
-    &::-webkit-input-placeholder {
+	&::-webkit-input-placeholder {
 		color: @color;
 		font-size: @fontSize;
 		font-weight: @fontWeight;
@@ -320,13 +319,13 @@
 		font-size: @fontSize;
 		font-weight: @fontWeight;
 	}
-    &::-moz-placeholder {
+	&::-moz-placeholder {
 		color: @color;
 		font-size: @fontSize;
 		font-weight: @fontWeight;
 		opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
 	}
-    &:-ms-input-placeholder {
+	&:-ms-input-placeholder {
 		color: @color;
 		font-size: @fontSize;
 		font-weight: @fontWeight;
@@ -337,19 +336,19 @@
  * flex: flex-grow flex-shrink flex-basis|auto|initial|inherit;
  */
 .flex (@value: ~"0 1 auto") {
-    -webkit-flex: @value;
+	-webkit-flex: @value;
 	-moz-flex: @value;
-    -ms-flex: @value;
-    flex: @value;
+	-ms-flex: @value;
+	flex: @value;
 }
 
 .flex-width (@width: 100%) {
-    -webkit-flex: 1 1 @width;
+	-webkit-flex: 1 1 @width;
 	-moz-flex: 1 1 @width;
-    -ms-flex: 1 1 @width;
-    flex: 1 1 @width;
-    max-width: @width;
-    max-height: 100%;
+	-ms-flex: 1 1 @width;
+	flex: 1 1 @width;
+	max-width: @width;
+	max-height: 100%;
 }
 
 .mask-image (@src) {
@@ -367,15 +366,25 @@
 	text-rendering: optimizeLegibility; /* auto | optimizeSpeed | optimizeLegibility | geometricPrecision */
 }
 
+/* Chrome 4.0, IE 6.0, Firefox 7.0, Safari 3.1, Opera 11.0 (9.0 -o-)
+ * text-overflow: clip|ellipsis|string|initial|inherit;
+ */
+.text-overflow (@value: clip) {
+	-o-text-overflow: @value;
+	text-overflow: @value;
+}
+
 .text-overflow-ellipsis () {
 	white-space: nowrap;
 	overflow: hidden;
-	text-overflow: ellipsis;
+	.text-overflow(ellipsis);
 }
 
+/* Chrome, Firefox 48.0, Opera, Safari
+ */
 .text-gradient (@from, @to) {
-    color: @to;
-    background: -webkit-linear-gradient(left top, @from, @to);
+	color: @to;
+	background: -webkit-linear-gradient(left top, @from, @to);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
@@ -400,7 +409,7 @@
 	margin-right: auto;
 }
 
-.display-inline () {
+.inline-block () {
 	display: -moz-inline-stack;
 	display: inline-block;
 	vertical-align: top;
