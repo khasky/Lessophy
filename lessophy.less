@@ -101,19 +101,19 @@
 /* Chrome 5.0 (4.0 -webkit-), IE 9.0, Mozilla 4.0 (3.0 -moz-), Safari 5.0 (3.1 -webkit-), Opera 10.5
  * border-bottom-left-radius: length|% [length|%]|initial|inherit;
  */
-.border-radiuses (@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
-	-webkit-border-top-right-radius: @topright;
-	-webkit-border-bottom-right-radius: @bottomright;
-	-webkit-border-bottom-left-radius: @bottomleft;
-	-webkit-border-top-left-radius: @topleft;
-	-moz-border-radius-topright: @topright;
-	-moz-border-radius-bottomright: @bottomright;
-	-moz-border-radius-bottomleft: @bottomleft;
-	-moz-border-radius-topleft: @topleft;
-	border-top-right-radius: @topright;
-	border-bottom-right-radius: @bottomright;
-	border-bottom-left-radius: @bottomleft;
-	border-top-left-radius: @topleft;
+.border-radiuses (@topRight: 0, @bottomRight: 0, @bottomLeft: 0, @topLeft: 0) {
+	-webkit-border-top-right-radius: @topRight;
+	-webkit-border-bottom-right-radius: @bottomRight;
+	-webkit-border-bottom-left-radius: @bottomLeft;
+	-webkit-border-top-left-radius: @topLeft;
+	-moz-border-radius-topright: @topRight;
+	-moz-border-radius-bottomright: @bottomRight;
+	-moz-border-radius-bottomleft: @bottomLeft;
+	-moz-border-radius-topleft: @topLeft;
+	border-top-right-radius: @topRight;
+	border-bottom-right-radius: @bottomRight;
+	border-bottom-left-radius: @bottomLeft;
+	border-top-left-radius: @topLeft;
 }
 
 /* Chrome 4.0, IE 9.0 (IE 8.0 filter), Mozilla 2.0, Safari 3.1, Opera 9.0
@@ -470,25 +470,29 @@
 
 /* Chrome 4.0, IE 10.0, Firefox 4.0, Safari 5.0, Opera 15.0
  */
-.placeholder-font (@fontColor, @fontSize, @fontWeight) {
+.placeholder-font (@fontColor: #111111, @fontSize: 16px, @fontName: sans-serif, @fontWeight: normal) {
 	&::-webkit-input-placeholder {
 		color: @fontColor;
+		font-family: @fontName;
 		font-size: @fontSize;
 		font-weight: @fontWeight;
 	}
 	&:-moz-placeholder {
 		color: @fontColor;
+		font-family: @fontName;
 		font-size: @fontSize;
 		font-weight: @fontWeight;
 	}
 	&::-moz-placeholder {
 		color: @fontColor;
+		font-family: @fontName;
 		font-size: @fontSize;
 		font-weight: @fontWeight;
 		opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
 	}
 	&:-ms-input-placeholder {
 		color: @fontColor;
+		font-family: @fontName;
 		font-size: @fontSize;
 		font-weight: @fontWeight;
 	}
@@ -504,34 +508,132 @@
 	flex: @value;
 }
 
-.flex-width (@width: 100%) {
-	-webkit-flex: 1 1 @width;
-	-moz-flex: 1 1 @width;
-	-ms-flex: 1 1 @width;
-	flex: 1 1 @width;
-	max-width: @width;
-	max-height: 100%;
+/* Chrome 29.0 (21.0 -webkit-), IE 11.0 (10.0 -ms-), Mozilla 28.0 (18.0 -moz-), Safari 9.0 (6.1 -webkit-), Opera 12.1
+ * flex-wrap: nowrap|wrap|wrap-reverse|initial|inherit;
+ */
+.flex-wrap (@value: wrap) {
+	-webkit-flex-wrap: @value;
+	-ms-flex-wrap: @value;
+	flex-wrap: @value;
+}
+
+/* Chrome 29.0 (21.0 -webkit-), IE 11.0 (10.0 -ms-), Mozilla 28.0 (18.0 -moz-), Safari 9.0 (6.1 -webkit-), Opera 17.0
+ * justify-content: flex-start|flex-end|center|space-between|space-around|initial|inherit;
+ */
+.flex-justify (@value: flex-start) {
+	-webkit-justify-content: @value;
+	-moz-justify-content: @value;
+	.ms-flex-justify(@value);
+	justify-content: @value;
+}
+.ms-flex-justify (@value) when (@value = space-between) {
+	-ms-flex-pack: justify;
+}
+.ms-flex-justify (@value) when (@value = space-around) {
+	-ms-flex-pack: distribute;
+}
+.ms-flex-justify (@value) when (@value = flex-end) {
+	-ms-flex-pack: end;
+}
+.ms-flex-justify (@value) when (@value = flex-start) {
+	-ms-flex-pack: start;
+}
+.ms-flex-justify (@value) when (@value = center) {
+	-ms-flex-pack: center;
+}
+
+/* Chrome 29.0 (21.0 -webkit-), IE 11.0 (10.0 -ms-), Mozilla 28.0 (18.0 -moz-), Safari 9.0 (6.1 -webkit-), Opera 17.0
+ * flex-direction: row|row-reverse|column|column-reverse|initial|inherit;
+ */
+.flex-direction (@value: row) {
+	-webkit-flex-direction: @value;
+	-ms-flex-direction: @value;
+	flex-direction: @value;
+}
+
+/* Chrome 29.0 (21.0 -webkit-), IE 11.0 (10.0 -ms-), Mozilla 28.0 (18.0 -moz-), Safari 9.0 (6.1 -webkit-), Opera 17.0
+ * order: number|initial|inherit;
+ */
+.flex-order (@value: 0) {
+	-webkit-order: @value;
+	-ms-flex-order: @value;
+	order: @order;
+}
+
+/* Chrome 21.0, IE 11.0, Mozilla 20.0, Safari 9.0 (7.0 -webkit-), Opera 12.1
+ * align-items: stretch|center|flex-start|flex-end|baseline|initial|inherit;
+ */
+.flex-align-items (@value: stretch) {
+	-webkit-align-items: @value;
+	-ms-flex-align: @value;
+	align-items: @value;   
+}
+
+/* Chrome 21.0, IE 11.0, Mozilla 20.0, Safari 9.0 (7.0 -webkit-), Opera 12.1
+ * align-self: auto|stretch|center|flex-start|flex-end|baseline|initial|inherit;
+ */
+.flex-align-self (@value: auto) {
+	-webkit-align-self: @value;
+	.ms-flex-align-self(@value);
+	align-self: @value;
+}
+.ms-flex-align-self (@value) when (@value = flex-end) {
+	-ms-flex-item-align: end;
+}
+.ms-flex-align-self (@value) when (@value = flex-start) {
+	-ms-flex-item-align: start;
+}
+.ms-flex-align-self (@value) when (@value = auto), (@value = center), (@value = baseline), (@value = stretch) {
+	-ms-flex-item-align: @value;
+}
+
+/* Chrome 29.0 (21.0 -webkit-), IE 11.0, Mozilla 28.0, Safari 9.0 (6.1 -webkit-), Opera 12.1
+ * flex-grow: number|initial|inherit;
+ */
+.flex-grow (@value: 0) {
+	-webkit-flex-grow: @value;
+	-ms-flex-grow: @value;
+	flex-grow: @value;
+}
+
+/* Chrome 29.0 (21.0 -webkit-), IE 11.0, Mozilla 28.0, Safari 9.0 (8.0 -webkit-), Opera 12.1
+ * flex-shrink: number|initial|inherit;
+ */
+.flex-shrink (@value: 1) {
+	-webkit-flex-shrink: @value;
+	-ms-flex-shrink: @value;
+	flex-shrink: @value;
+}
+
+/* Chrome 29.0 (21.0 -webkit-), IE 11.0, Mozilla 22.0, Safari 9.0 (7.0 -webkit-), Opera 12.1
+ * flex-basis: number|auto|initial|inherit;
+ */
+.flex-basis (@value: auto) {
+	-webkit-flex-basis: @value;
+	-ms-flex-basis: @value;
+	flex-basis: @value;
 }
 
 /* Chrome 29.0 (19.0 -webkit-), IE 11.0 (9.0 expression), Firefox 45.0 -moz-, Safari 9.1, Opera 38.0
  */
-.calc-width (@fallbackWidth: 100px, @calc: ~"50% - 100px") {
+.calc-width (@fallbackWidth: 100px, @value: ~"100% - 50px") {
 	width: @fallbackWidth;
-	width: -webkit-calc(@calc);
-	width: expression(@calc);
-	width: -moz-calc(@calc);
-	width: -o-calc(@calc);
-	width: calc(@calc);
+	width: -webkit-calc(@value);
+	width: -moz-calc(@value);
+	width: -o-calc(@value);
+	width: expression(@value);
+	width: calc(@value);
 }
 
-/* Chrome 8.0 (1.0 -webkit-), Opera -webkit, Safari 4.0 -webkit
- * mask-image: none|<mask-source>|<image>
+/* Chrome 29.0 (19.0 -webkit-), IE 11.0 (9.0 expression), Firefox 45.0 -moz-, Safari 9.1, Opera 38.0
  */
-.mask-image (@src) {
-	-webkit-mask-image: url('@{src}');
-	-moz-mask-image: url('@{src}');
-	-o-mask-image: url('@{src}');
-	mask-image: url('@{src}');
+.calc-height (@fallbackHeight: 100px, @value: ~"100% - 50px") {
+	height: @fallbackHeight;
+	height: -webkit-calc(@value);
+	height: -moz-calc(@value);
+	height: -o-calc(@value);
+	height: expression(@value);
+	height: calc(@value);
 }
 
 /* Chrome 18.0 -webkit-, IE 13.0, Firefox 35.0, Safari 9.1 (6.0 -webkit-), Opera 15.0 -webkit-
@@ -543,6 +645,41 @@
     -ms-filter: @value;
     -o-filter: @value;
 	filter: @value;
+}
+
+/* Chrome 2.0, IE 9.0, Firefox 2.0 -moz-, Safari 1.1, Opera 9.5
+ */
+.selection (@backgroundColor: #ffffff, @fontColor: #111111) {
+	&::-webkit-selection {
+		background: @backgroundColor;
+		color: @fontColor;
+	}
+	&::-moz-selection {
+		background: @backgroundColor;
+		color: @fontColor;
+	}
+	&::-ms-selection {
+		background: @backgroundColor;
+		color: @fontColor;
+	}
+	&::-o-selection {
+		background: @backgroundColor;
+		color: @fontColor;
+	}
+	&::selection {
+		background: @backgroundColor;
+		color: @fontColor;
+	}
+}
+
+/* Chrome 13.0 -webkit-, IE 10.0 -ms-, Firefox 43.0 (6.0 -moz-), Safari 5.1 -webkit-
+ * hyphens: none|manual|auto
+ */
+.hyphens (@value: none) {
+	-webkit-hyphens: @value;
+	-moz-hyphens: @value;
+	-ms-hyphens: @value;
+	hyphens: @value;
 }
 
 /*
@@ -559,10 +696,24 @@
 	}
 }
 
-.center-block () {
+.center-block-h () {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+/* Requires 100% height and position: relative on parent block
+ */
+.center-block-h-v (@blockWidth: 300px, @blockHeight: 200px) {
+	display: block;
+	width: @blockWidth;
+	height: @blockHeight;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	@heightMargin: -(round(@blockHeight / 2));
+	@widthMargin: -(round(@blockWidth / 2));
+	margin:  ~"@{heightMargin}" 0 0 ~"@{widthMargin}";
 }
 
 .inline-block () {
@@ -574,14 +725,15 @@
 }
 
 .flex-block () {
-	display: -webkit-box;
+	display: -webkit-box; /* Safari < 6 */
+	display: -webkit-flexbox; /* Safari 6+ */
 	display: -webkit-flex;
 	display: -moz-box;
-	display: -ms-flexbox;
+	display: -ms-flexbox; /* IE 10 */
 	display: flex;
 }
 
-.img-no-smoothing () {
+.disable-image-smoothing () {
 	image-rendering: optimizeSpeed;
 	image-rendering: -moz-crisp-edges; /* Firefox */
 	image-rendering: -o-crisp-edges; /* Opera */
@@ -592,7 +744,7 @@
 
 /* Disabling platform-specific default styles
  */
-.no-browser-appearence () {
+.disable-browser-appearence () {
     -webkit-appearance: none;
     -moz-appearance: none;
 }
