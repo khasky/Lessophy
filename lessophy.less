@@ -98,22 +98,45 @@
 	border-radius: @value;
 }
 
-/* Chrome 5.0 (4.0 -webkit-), IE 9.0, Mozilla 4.0 (3.0 -moz-), Safari 5.0 (3.1 -webkit-), Opera 10.5
- * border-bottom-left-radius: length|% [length|%]|initial|inherit;
- */
+.border-bottom-left-radius (@value: 0) {
+	-webkit-border-bottom-left-radius: @value;
+	-moz-border-radius-bottomleft: @value;
+	border-bottom-left-radius: @value;
+}
+
+.border-bottom-right-radius (@value: 0) {
+	-webkit-border-bottom-right-radius: @value;
+	-moz-border-radius-bottomright: @value;
+	border-bottom-right-radius: @value;
+}
+
+.border-top-left-radius (@value: 0) {
+	-webkit-border-top-left-radius: @value;
+	-moz-border-top-left-radius: @value;
+	border-top-left-radius: @value;
+}
+
+.border-top-right-radius (@value: 0) {
+	-webkit-border-top-right-radius: @value;
+	-moz-border-top-right-radius: @value;
+	border-top-right-radius: @value;
+}
+
 .border-radiuses (@topRight: 0, @bottomRight: 0, @bottomLeft: 0, @topLeft: 0) {
-	-webkit-border-top-right-radius: @topRight;
-	-webkit-border-bottom-right-radius: @bottomRight;
-	-webkit-border-bottom-left-radius: @bottomLeft;
-	-webkit-border-top-left-radius: @topLeft;
-	-moz-border-radius-topright: @topRight;
-	-moz-border-radius-bottomright: @bottomRight;
-	-moz-border-radius-bottomleft: @bottomLeft;
-	-moz-border-radius-topleft: @topLeft;
-	border-top-right-radius: @topRight;
-	border-bottom-right-radius: @bottomRight;
-	border-bottom-left-radius: @bottomLeft;
-	border-top-left-radius: @topLeft;
+	.border-top-left-radius(@topLeft);
+	.border-top-right-radius(@topRight);
+	.border-bottom-left-radius(@bottomLeft);
+	.border-bottom-right-radius(@bottomRight);
+}
+
+/* Chrome 16.0 (4.0 -webkit-), IE 11.0, Mozilla 15.0 (3.5 -moz-), Safari 6.0 (3.1 -webkit-), Opera 15.0 (11.0 -o-)
+ * border-image: source slice width outset repeat|initial|inherit;
+ */
+.border-image (@value: ~"none 100% 1 0 stretch") {
+	-webkit-border-image: @value;
+	-moz-border-image: @value;
+	-o-border-image: @value;
+	border-image: @value;
 }
 
 /* Chrome 4.0, IE 9.0 (IE 8.0 filter), Mozilla 2.0, Safari 3.1, Opera 9.0
@@ -309,20 +332,60 @@
 	transform: scale(@value);
 }
 
-.transform-skew (@deg: 0) {
-	-webkit-transform: skew(@deg);
-	-moz-transform: skew(@deg);
-	-ms-transform: skew(@deg);
-	-o-transform: skew(@deg);
-	transform: skew(@deg);
+.transform-scaleX (@value: 1) {
+	-webkit-transform: scaleX(@value);
+	-moz-transform: scaleX(@value);
+	-ms-transform: scaleX(@value);
+	-o-transform: scaleX(@value);
+	transform: scaleX(@value);
 }
 
-.transform-skewXY (@degX: 0, @degY: 0) {
+.transform-scaleY (@value: 1) {
+	-webkit-transform: scaleY(@value);
+	-moz-transform: scaleY(@value);
+	-ms-transform: scaleY(@value);
+	-o-transform: scaleY(@value);
+	transform: scaleY(@value);
+}
+
+.transform-scaleZ (@value: 1) {
+	-webkit-transform: scaleZ(@value);
+	-moz-transform: scaleZ(@value);
+	-ms-transform: scaleZ(@value);
+	-o-transform: scaleZ(@value);
+	transform: scaleZ(@value);
+}
+
+.transform-scale3d (@sX: 1, @sY: 1, @sZ: 1) {
+	-webkit-transform: scale3d(@sX, @sY, @sZ);
+	-moz-transform: scale3d(@sX, @sY, @sZ);
+	-ms-transform: scale3d(@sX, @sY, @sZ);
+	-o-transform: scale3d(@sX, @sY, @sZ);
+	transform: scale3d(@sX, @sY, @sZ);
+}
+
+.transform-skew (@degX: 0, @degY: 0) {
 	-webkit-transform: skew(@degX, @degY);
 	-moz-transform: skew(@degX, @degY);
 	-ms-transform: skew(@degX, @degY);
 	-o-transform: skew(@degX, @degY);
 	transform: skew(@degX, @degY);
+}
+
+.transform-skewX (@deg: 0) {
+	-webkit-transform: skewX(@deg);
+	-moz-transform: skewX(@deg);
+	-ms-transform: skewX(@deg);
+	-o-transform: skewX(@deg);
+	transform: skewX(@deg);
+}
+
+.transform-skewY (@deg: 0) {
+	-webkit-transform: skewY(@deg);
+	-moz-transform: skewY(@deg);
+	-ms-transform: skewY(@deg);
+	-o-transform: skewY(@deg);
+	transform: skewY(@deg);
 }
 
 .transform-rotate (@deg: 0) {
@@ -349,12 +412,44 @@
 	transform: rotateY(@deg);
 }
 
+.transform-rotateZ (@deg: 0) {
+	-webkit-transform: rotateZ(@deg);
+	-moz-transform: rotateZ(@deg);
+	-ms-transform: rotateZ(@deg);
+	-o-transform: rotateZ(@deg);
+	transform: rotateZ(@deg);
+}
+
+.transform-rotate3d (@x: 0, @y: 0, @z: 0, @deg: 0) {
+	-webkit-transform: rotate3d(@x, @y, @z, @deg);
+	-moz-transform: rotate3d(@x, @y, @z, @deg);
+	-ms-transform: rotate3d(@x, @y, @z, @deg);
+	-o-transform: rotate3d(@x, @y, @z, @deg);
+	transform: rotate3d(@x, @y, @z, @deg);
+}
+
 .translate (@x: 0, @y: 0) {
 	-webkit-transform: translate(@x, @y);
 	-moz-transform: translate(@x, @y);
 	-ms-transform: translate(@x, @y);
 	-o-transform: translate(@x, @y);
 	transform: translate(@x, @y);
+}
+
+.translateX (@x: 0) {
+	-webkit-transform: translateX(@x);
+	-moz-transform: translateX(@x);
+	-ms-transform: translateX(@x);
+	-o-transform: translateX(@x);
+	transform: translateX(@x);
+}
+
+.translateY (@y: 0) {
+	-webkit-transform: translateY(@y);
+	-moz-transform: translateY(@y);
+	-ms-transform: translateY(@y);
+	-o-transform: translateY(@y);
+	transform: translateY(@y);
 }
 
 .translateZ (@z: 0) {
@@ -436,25 +531,25 @@
 	backface-visibility: @value;
 }
 
-.background-gradient-horizontal (@fallback: #333333, @from: #3b5fc3, @to: rgba(37,37,37,0)) {
+.background-gradient-horizontal (@fallback: #333333, @from: #3b5fc3, @to: rgba(37,37,37,0), @start: 0%, @end: 100%) {
 	background: @fallback;
-	background: -moz-linear-gradient(left, @from 0%, @to 100%);
-	background: -webkit-gradient(left top, right top, color-stop(0%, @from), color-stop(100%, @to));
-	background: -webkit-linear-gradient(left, @from 0%, @to 100%);
-	background: -o-linear-gradient(left, @from 0%, @to 100%);
-	background: -ms-linear-gradient(left, @from 0%, @to 100%);
-	background: linear-gradient(to right, @from 0%, @to 100%);
+	background: -moz-linear-gradient(left, @from @start, @to @end);
+	background: -webkit-gradient(left top, right top, color-stop(@start, @from), color-stop(@end, @to));
+	background: -webkit-linear-gradient(left, @from @start, @to @end);
+	background: -o-linear-gradient(left, @from @start, @to @end);
+	background: -ms-linear-gradient(left, @from @start, @to @end);
+	background: linear-gradient(to right, @from @start, @to @end);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@from', endColorstr='@to', GradientType=1);
 }
 
-.background-gradient-vertical (@fallback: #333333, @from: #3b5fc3, @to: rgba(59,95,195,0.5)) {
+.background-gradient-vertical (@fallback: #333333, @from: #3b5fc3, @to: rgba(59,95,195,0.5), @start: 0%, @end: 100%) {
 	background: @fallback;
-	background: -moz-linear-gradient(top, @from 0%, @to 100%);
-	background: -webkit-gradient(left top, left bottom, color-stop(0%, @from), color-stop(100%, @to));
-	background: -webkit-linear-gradient(top, @from 0%, @to 100%);
-	background: -o-linear-gradient(top, @from 0%, @to 100%);
-	background: -ms-linear-gradient(top, @from 0%, @to 100%);
-	background: linear-gradient(to bottom, @from 0%, @to 100%);
+	background: -moz-linear-gradient(top, @from @start, @to @end);
+	background: -webkit-gradient(left top, left bottom, color-stop(@start, @from), color-stop(@end, @to));
+	background: -webkit-linear-gradient(top, @from @start, @to @end);
+	background: -o-linear-gradient(top, @from @start, @to @end);
+	background: -ms-linear-gradient(top, @from @start, @to @end);
+	background: linear-gradient(to bottom, @from @start, @to @end);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@from', endColorstr='@to', GradientType=0);
 }
 
@@ -643,8 +738,45 @@
 	-webkit-filter: @value;
     -moz-filter: @value;
     -ms-filter: @value;
-    -o-filter: @value;
 	filter: @value;
+}
+
+.filter-blur (@value: 0px) {
+	.filter(~"blur(@{value})");
+}
+
+.filter-brightness (@value: 1) {
+	.filter(~"brightness(@{value})");
+}
+
+.filter-contrast (@value: 0%) {
+	.filter(~"contrast(@{value})");
+}
+
+.filter-grayscale (@value: 0%) {
+	.filter(~"grayscale(@{value})");
+}
+
+.filter-hue-rotate (@value: 0deg) {
+	.filter(~"hue-rotate(@{value})");
+}
+
+.filter-invert (@value: 0%) {
+	.filter(~"invert(@{value})");
+}
+
+.filter-saturate (@value: 0) {
+	.filter(~"saturate(@{value})");
+}
+
+.filter-sepia (@value: 0%) {
+	.filter(~"sepia(@{value})");
+}
+
+/* <offset-x> <offset-y> [<blur-radius> | <spread-radius> | <color>]
+ */
+.filter-drop-shadow (@value: 16px 16px 10px #000000) {
+	.filter(~"drop-shadow(@{value})");
 }
 
 /* Chrome 2.0, IE 9.0, Firefox 2.0 -moz-, Safari 1.1, Opera 9.5
@@ -702,8 +834,6 @@
 	margin-right: auto;
 }
 
-/* Requires 100% height and position: relative on parent block
- */
 .center-block-h-v (@blockWidth: 300px, @blockHeight: 200px) {
 	display: block;
 	width: @blockWidth;
@@ -713,7 +843,7 @@
 	top: 50%;
 	@heightMargin: -(round(@blockHeight / 2));
 	@widthMargin: -(round(@blockWidth / 2));
-	margin:  ~"@{heightMargin}" 0 0 ~"@{widthMargin}";
+	margin: ~"@{heightMargin}" 0 0 ~"@{widthMargin}";
 }
 
 .inline-block () {
@@ -742,9 +872,10 @@
 	-ms-interpolation-mode: nearest-neighbor; /* IE8+ */
 }
 
-/* Disabling platform-specific default styles
+/* Allows changing the style of any element to platform-based interface elements or vice versa
  */
-.disable-browser-appearence () {
-    -webkit-appearance: none;
-    -moz-appearance: none;
+.appearence (@value: none) {
+    -webkit-appearance: @value;
+    -moz-appearance: @value;
+	appearance: @value;
 }
