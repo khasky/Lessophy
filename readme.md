@@ -9,6 +9,10 @@ My own collection of LESS mixins with truthful comments about browser support an
 
 * .calc-width (@fallbackWidth: 100px, @value: ~"100% - 50px")
 * .calc-height (@fallbackHeight: 100px, @value: ~"100% - 50px")
+* .min-height (@value: 0px)
+* .max-height (@value: 0px)
+* .min-width (@value: 0px)
+* .max-width (@value: 0px)
 * .box-sizing (@type: content-box)
 * .box-shadow (@value: none)
 * .background-clip (@value: border-box)
@@ -38,7 +42,7 @@ My own collection of LESS mixins with truthful comments about browser support an
 * .text-gradient (@from: #4d9de0, @to: #3dcd8d)
 * .text-overflow (@value: clip)
 * .text-overflow-ellipsis ()
-* .text-antialias ()
+* .text-antialias (true/false)
 * .text-size-adjust (@value: 100%)
 
 #### Transitions
