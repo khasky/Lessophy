@@ -48,6 +48,7 @@
 .text-antialias (@enabled) when (@enabled = true) {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	-ms-text-rendering: optimizeLegibility;
 	text-rendering: optimizeLegibility;
 }
 .text-antialias (@enabled) when (@enabled = false) {
@@ -555,7 +556,9 @@
  * user-select: auto|text|none|contain|all
  */
 .user-select (@value: all) {
+	-webkit-touch-callout: @value;
 	-webkit-user-select: @value;
+	-khtml-user-select: @value;
 	-moz-user-select: @value;
 	-ms-user-select: @value;
 	user-select: @value;

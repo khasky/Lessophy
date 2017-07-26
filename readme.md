@@ -1,7 +1,7 @@
 Lessophy
 ===================
 
-My own collection of LESS mixins with truthful comments about browser support and property values.
+My collection of LESS mixins with comments about browser support and property values.
 
 ## List of mixins
 
@@ -124,3 +124,4 @@ My own collection of LESS mixins with truthful comments about browser support an
 * .center-block-h-v (@blockWidth: 300px, @blockHeight: 200px)
 * .inline-block ()
 * .flex-block ()
+* .overlay-block (@layer: 1, @background: rgba(0, 0, 0, 0.2))
